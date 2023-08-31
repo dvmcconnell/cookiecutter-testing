@@ -52,9 +52,6 @@ myst-parser = {version = ">=0.16.1"}
 [tool.poetry.scripts]
 cookiecutter-testing = "cookiecutter_testing.__main__:main"
 
-[tool.bandit.assert_used]
-skips = ["*_test.py", "*test_*.py"]
-
 [tool.coverage.paths]
 source = [
     "src",
