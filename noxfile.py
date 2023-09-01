@@ -23,7 +23,7 @@ except ImportError:
 
 
 package = "cookiecutter_testing"
-python_versions = ["3.10.4"]
+python_versions = ["3.10.12", "3.11.4"]
 nox.needs_version = ">= 2021.6.6"
 nox.options.sessions = (
     "pre-commit",

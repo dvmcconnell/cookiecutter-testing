@@ -42,7 +42,6 @@ repos:
       #   types: [text]
       #   stages: [commit, push, manual]
       - id: flake8
-        args: [--darglint-ignore-regex, .*, "--config", ".flake8"]
         name: flake8
         entry: flake8
         language: system
