@@ -22,6 +22,7 @@ requests = "^2.31.0"
 tornado = "^6.3.2"
 pygments = "^2.15.0"
 flake8 = "^6.0.0"
+flake8-pyproject = "^1.2.3"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"
@@ -52,6 +53,9 @@ myst-parser = {version = ">=0.16.1"}
 [tool.poetry.scripts]
 cookiecutter-testing = "cookiecutter_testing.__main__:main"
 
+[tool.bandit.assert_used]
+skips = ["*_test.py", "*test_*.py"]
+
 [tool.coverage.paths]
 source = [
     "src",
@@ -72,6 +76,44 @@ ignore_errors = true
 fail_under = 80
 exclude_also = [
     "if __name__ == .__main__.:"
+]
+
+[tool.flake8]
+select = ["B9", "BLK", "DAR", "E", "F", "RST", "S", "W"]
+    # B Bugbear https://pypi.org/project/flake8-bugbear/
+    # B9 Bugbear's more opinionated warnings
+    # BLK Black https://github.com/psf/black
+    # DAR Darglint  docstrings https://github.com/terrencepreilly/darglint
+    # E Pep8 errors https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
+    # F Pyflakes errors https://flake8.pycqa.org/en/latest/user/error-codes.html
+    # RST docstrings https://pypi.org/project/flake8-rst/
+    # S Detect common security issues Bandit/flake8-bandit
+    # W PEP8 Warnings
+ignore = ["E203", "E501", "W503", "RST201", "RST203", "RST301"]
+    # E203 White space before ':'
+    # E501 Line too long - replaced by Bugbear B950
+    # W503 Line break before a binary operator
+    # RST201 Block quote ends without a blank line; unexpected unindent
+    # RST203 Definition list ends without a blank line; unexpected unindent
+    # RST301 Unexpected indentation
+max-line-length = 130
+docstring-convention = "pep257"
+strictness = "short"
+rst-directives = "item"
+per-file-ignores = [
+    "tests/*:S101,B950"
+]
+# S101  Allow the use of assert within the tests directory, since tests require it
+# B950  Line too long
+exclude = [
+    "__init__.py",
+    ".git",
+    "__pycache__",
+    ".tox",
+    ".eggs",
+    "*.egg",
+    ".venv",
+    "noxfile.py",
 ]
 
 [tool.isort]
