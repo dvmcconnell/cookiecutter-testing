@@ -1,0 +1,137 @@
+[tool.poetry]
+name = "cookiecutter-testing"
+version = "0.0.0"
+description = "Cookiecutter Testing"
+authors = ["Default Author <default@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/default/cookiecutter-testing"
+repository = "https://github.com/default/cookiecutter-testing"
+documentation = "https://cookiecutter-testing.readthedocs.io"
+classifiers = [
+    "Development Status :: 1 - Planning",
+]
+
+[tool.poetry.urls]
+Changelog = "https://github.com/default/cookiecutter-testing/releases"
+
+[tool.poetry.dependencies]
+python = "^3.10.12"
+click = ">=8.0.1"
+requests = "^2.31.0"
+tornado = "^6.3.2"
+pygments = "^2.15.0"
+flake8 = "^6.0.0"
+
+[tool.poetry.dev-dependencies]
+Pygments = ">=2.10.0"
+bandit = ">=1.7.4"
+black = ">=21.10b0"
+certifi = ">=2023.07.22"
+coverage = {extras = ["toml"], version = ">=6.2"}
+darglint = ">=1.8.1"
+flake8 = ">=4.0.1"
+flake8-bugbear = ">=23.3.12"
+flake8-docstrings = ">=1.6.0"
+flake8-pyproject = ">=1.2.3"
+flake8-rst-docstrings = ">=0.2.5"
+furo = ">=2021.11.12"
+isort = ">=5.10.1"
+mypy = ">=0.930"
+pep8-naming = ">=0.12.1"
+pre-commit = ">=2.16.0"
+pre-commit-hooks = ">=4.1.0"
+pytest = ">=6.2.5"
+pyupgrade = ">=2.29.1"
+safety = ">=1.10.3"
+sphinx = ">=4.3.2"
+sphinx-autobuild = ">=2021.3.14"
+sphinx-click = ">=3.0.2"
+typeguard = ">=2.13.3"
+xdoctest = {extras = ["colors"], version = ">=0.15.10"}
+myst-parser = {version = ">=0.16.1"}
+
+[tool.poetry.scripts]
+cookiecutter-testing = "cookiecutter_testing.__main__:main"
+
+[tool.bandit.assert_used]
+skips = ["*_test.py", "*test_*.py"]
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["cookiecutter_testing"]
+omit = ["tests", "*/tests"]
+
+[tool.coverage.report]
+show_missing = true
+ignore_errors = true
+fail_under = 80
+exclude_also = ["if __name__ == .__main__.:"]
+
+[tool.flake8]
+select = ["B", "B9", "BLK", "DAR", "E", "F", "RST", "S", "W"]
+    # B Bugbear https://pypi.org/project/flake8-bugbear/
+    # B9 Bugbear's more opinionated warnings
+    # BLK Black https://github.com/psf/black
+    # DAR Darglint  docstrings https://github.com/terrencepreilly/darglint
+    # E Pep8 errors https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
+    # F Pyflakes errors https://flake8.pycqa.org/en/latest/user/error-codes.html
+    # RST docstrings https://pypi.org/project/flake8-rst/
+    # S Detect common security issues Bandit/flake8-bandit
+    # W PEP8 Warnings
+ignore = ["E203", "E501", "W503", "RST201", "RST203", "RST301"]
+    # E203 White space before ':'
+    # E501 Line too long - replaced by Bugbear B950
+    # W503 Line break before a binary operator
+    # RST201 Block quote ends without a blank line; unexpected unindent
+    # RST203 Definition list ends without a blank line; unexpected unindent
+    # RST301 Unexpected indentation
+max-line-length = 120
+docstring-convention = "pep257"
+strictness = "short"
+rst-directives = "item"
+per-file-ignores = [
+    "tests/*:S101,B950"
+]
+# S101  Allow the use of assert within the tests directory, since tests require it
+# B950  Line too long
+exclude = [
+    "__init__.py",
+    ".git",
+    "__pycache__",
+    ".tox",
+    ".eggs",
+    "*.egg",
+    ".venv",
+    "noxfile.py",
+]
+
+[tool.isort]
+profile = "black"
+force_single_line = true
+lines_after_imports = 2
+
+[tool.mypy]
+strict = true
+warn_unreachable = true
+pretty = true
+show_column_numbers = true
+show_error_context = true
+
+[tool.semantic_release]
+branch="main"
+build_command=false
+commit_subject="{version}"
+tag_commit=true
+tag_format="{version}"
+upload_to_repository=false
+upload_to_release=false # don't upload /dist to GitHub
+version_toml="pyproject.toml:tool.poetry.version"
+version_source="commit"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

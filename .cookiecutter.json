@@ -1,0 +1,15 @@
+{
+  "_output_dir": "/Users/dmcconnell/Desktop/git",
+  "_repo_dir": "cookiecutter-archer-software",
+  "_template": "cookiecutter-archer-software",
+  "author": "Default Author",
+  "copyright_year": "2023",
+  "development_status": "Development Status :: 1 - Planning",
+  "email": "default@gmail.com",
+  "friendly_name": "Cookiecutter Testing",
+  "github_user": "default",
+  "license": "MIT",
+  "package_name": "cookiecutter_testing",
+  "project_name": "cookiecutter-testing",
+  "version": "0.0.0"
+}
