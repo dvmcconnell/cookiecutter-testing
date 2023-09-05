@@ -11,7 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        session: [pre-commit, safetry, mypy, tests, typeguard, xdoctest, docs-build]
+        session:
+          [pre-commit, safetry, mypy, tests, typeguard, xdoctest, docs-build]
 
     env:
       NOXSESSION: ${{ matrix.session }}
