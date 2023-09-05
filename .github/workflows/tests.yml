@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         session:
-          [pre-commit, safetry, mypy, tests, typeguard, xdoctest, docs-build]
+          [pre-commit, safety, mypy, tests, typeguard, xdoctest, docs-build]
 
     env:
       NOXSESSION: ${{ matrix.session }}
