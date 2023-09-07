@@ -61,7 +61,7 @@ jobs:
           python = f"py{sys.version_info[0]}.{sys.version_info[1]}"
           payload = sys.version.encode() + sys.executable.encode()
           digest = hashlib.sha256(payload).hexdigest()
-          result = f"${{ runner.os }}-{python}-{digest[:8]}-pre-commit"
+          result = f"${{ runner.os }}-{python}-{digest}-pre-commit"
 
           with open(os.environ["GITHUB_OUTPUT"], "a") as gh_out:
               print(f"result={result}", file=gh_out)
