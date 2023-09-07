@@ -58,7 +58,7 @@ jobs:
           import os
           import sys
 
-          python = f"py{'.'.join(sys.version_info[:2])}"
+          python = f"py{sys.version_info[0]}.{sys.version_info[1]}"
           payload = sys.version.encode() + sys.executable.encode()
           digest = hashlib.sha256(payload).hexdigest()
           result = f"${{ runner.os }}-{python}-{digest[:8]}-pre-commit"
