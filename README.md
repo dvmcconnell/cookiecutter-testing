@@ -31,9 +31,9 @@
 
 You can install _Cookiecutter Testing_ via [pip] from [PyPI]:
 
-```plaintext
-$ pip install cookiecutter-testing
-```
+<pre data-lang="plaintext">
+$ pip install poetry
+</pre>
 
 ## Usage
 
