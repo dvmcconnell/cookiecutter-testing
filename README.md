@@ -31,7 +31,7 @@
 
 You can install _Cookiecutter Testing_ via [pip] from [PyPI]:
 
-```console
+```plaintext
 $ pip install cookiecutter-testing
 ```
 
